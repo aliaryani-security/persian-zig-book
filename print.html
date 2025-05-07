@@ -25,17 +25,18 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
 
-        <!-- Provide site root to javascript -->
+        <!-- Provide site root and default themes to javascript -->
         <script>
-            var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc.js"></script>
@@ -45,8 +46,8 @@
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
 
                 if (theme.startsWith('"') && theme.endsWith('"')) {
                     localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
@@ -60,7 +61,8 @@
 
         <!-- Set the theme before any content is loaded, prevents flash -->
         <script>
-            var theme;
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
@@ -73,8 +75,8 @@
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var sidebar = null;
-            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
@@ -110,6 +112,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
@@ -153,10 +156,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="۱-معرفی-zig"><a class="header" href="#۱-معرفی-zig">۱. معرفی Zig</a></h1>
+                        <blockquote>
+<p>در آغاز هر کتاب ، با نام آن کسی شروع میکنیم که جهان پیرامون ما را کدنویسی و خلق کرد.</p>
+</blockquote>
+<p>این کتاب رو با عشق ترحمه می کنم ، سود و درآمدی برای من نداره ، اما دوست دارم ترجمه بشه تا اگر روزی کسی تصمیم به یادگیری این زبان کرد ،‌ برای پیدا کردن یک منبع اذیت نشه.
+<br><br>
+اگر روزی خواستی ازم حمایت کنی ، میتونی صفحه <a href="https://instagram.com/aliaryani.security">اینستاگرامم</a> رو دنبال کنی ❤️
+<br><br>
+کتاب رو بخون ، و از یادگیری لذت ببر 🥃</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="۱-معرفی-zig"><a class="header" href="#۱-معرفی-zig">۱. معرفی Zig</a></h1>
 <p>در این فصل ، میخوام شما رو با دنیای Zig آشنا کنم. زیگ یک زبان خیلی جوان هست که داره فعالانه توسعه داده میشه. در نتیجه ، دنیای زیگ هم همچنان خیلی خیلی بکر هست و منتظر شما نشسته تا اون رو بگردید و کاوش کنید ! این کتاب تلاش می کنه به شما در ماجراجویی برای درک و کشف دنیای هیجان انگیز زیگ کمک کنه.<br><br>
 در این کتاب این طور فرض شده که شما با زبان های برنامه نویسی تجربه قبلی دارید (هر زبانی ، نه صرفا زبان های سطح پایین). پس  ، اگه تجربه کار با پایتون ، جاوااسکریپت یا امثالهم رو دارید ، خوب هست. اما ، اگر تجربه کار با زبان های سطح پایین ، مثل C, C++ یا Rust رو داری ، احتمالا با این کتاب سریع تر پیش میری.<br></p>
-<h2 id="۱۱-زیگ-چی-هست-"><a class="header" href="#۱۱-زیگ-چی-هست-">۱.۱ زیگ چی هست ؟!</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="۱۱-زیگ-چی-هست-"><a class="header" href="#۱۱-زیگ-چی-هست-">۱.۱ زیگ چی هست ؟!</a></h2>
 <p>زیگ یک زبان برنامه نویسی مدرن ، سطح پایین ، و همه منظوره هست. بعضی برنامه نویس ها زیگ رو به عنوان یک نسخه مدرن و بهتر زبان C در نظر میگیرن.<br>
 <br>
 در نظر نویسنده این کتاب ، زیگ سفت و سخت پایبند به « هر چه کمتر ، بهتر » هست. به جای تلاش کردن برای اینکه با افزودن امکانات بیشتر و بیشتر بخواد مدرن بشه ، خیلی از بهبود هایی که زیگ ارائه میکنه درواقع حذف کردن ویژگی ها و رفتار های آزاردهنده در C و C++ هست ! به بیان دیگه ، زیگ سعی میکنه با ساده کردن زبان ، و داشتن رفتار ثابت و استوار ، خودش رو از بقیه بهتر کنه. در نتیجه ، تحلیل ، نوشتن ، و عیب یابی برنامه ها در زیگ به مراتب ساده تر از همین موارد در C یا C++ میشه.
@@ -165,7 +176,9 @@
 <blockquote>
 <p>به جای اینکه روی عیب یابی دانش برنامه نویسی خودت تمرکز کنی ، روی عیب یابی برنامه ای که نوشتی تمرکز کن.</p>
 </blockquote>
-<p>این عبارت مخصوصا درباره برنامه نویس های C++ صحیح هست. چون C++ یک زبان غول آسا هست که اقیانوسی از امکانات رو داره ، و همچنین در طعم ها مزه های مختلفی ارائه شده ! این موارد چیز هایی هستن که C++ خیلی پیچیده و سخت میکنند. زیگ تلاش میکنه تا خلاف جهت حرکت کنه. زیگ زبان خیلی ساده ای هست (پیچیدگی نداره) ، و بیشتر به زبان هایی مثل C و Go نزدیک هست.</p>
+<p>این عبارت مخصوصا درباره برنامه نویس های C++ صحیح هست. چون C++ یک زبان غول آسا هست که اقیانوسی از امکانات رو داره ، و همچنین در طعم ها مزه های مختلفی ارائه شده ! این موارد چیز هایی هستن که C++ خیلی پیچیده و سخت میکنند. زیگ تلاش میکنه تا خلاف جهت حرکت کنه. زیگ زبان خیلی ساده ای هست (پیچیدگی نداره) ، و بیشتر به زبان هایی مثل C و Go نزدیک هست.
+<br><br></p>
+<p>عبارت بالا برای برنامه نویسان C هم همچنان اهمیت داره. چون زبان C با وجود سادگی که داره ، خوندن و فهمیدنش سخت هست. به عنوان مثال ، ماکرو های پیش پرداز (preprocessor macros) یکی از عوامل شایع سردرگمی هستند. گاهی اوقات ، عیب یابی برنامه C رو واقعا سخت میکنند. چون ماکرو ها اساسا یک زبان دوم هستن که در دل C جاسازی شده اند که باعث مبهم شدن کد شما میشن. با ماکرو ها شما دیگه ۱۰۰ درصد مطمئن نیستید که کدوم قسمت از کد شما داره به کامپایلر ارسال میشه ، این یعنی ماکرو ها کد اصلی شما رو مبهم می کنند.</p>
 
                     </main>
 
