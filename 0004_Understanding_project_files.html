@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Page not found - Zig Book - Persian Edition</title>
-        <base href="/">
+        <title> درک فایل های پروژه  - Zig Book - Persian Edition</title>
 
 
         <!-- Custom HTML head -->
@@ -156,13 +155,32 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="درک-فایل-های-پروژه"><a class="header" href="#درک-فایل-های-پروژه">درک فایل های پروژه</a></h1>
+<p>بعد از اینکه دستور <code>init</code> رو از کامپایلر <code>zig</code> صدا میزنی ، فایل های جدیدی داخل دایرکتوری فعلی ایجاد میشن. اول از همه ، یک دایرکتوری "سورس" (<code>src</code>) ایجاد میشه که شامل دو فایل هست ، <code>main.zig</code> و <code>root.zig</code>. هر فایل <code>.zig</code> یک ماژول جداگانه زیگ هست ، که درواقع یک فایل متنی ساده هست که داخلش کد زیگ قرار گرفته<br><br></p>
+<p>طبق قاعده کلی ، ماژول <code>main.zig</code> جایی هست که تابع اصلی (<code>main funciton</code>) حضور داره. بنابراین ، اگر داری یک برنامه اجرایی در زیگ مینویسی ،‌نیاز هست که یک تابع <code>main()</code>  مشخص کنی ،‌ که نقطه شروع برنامه باشه (جایی که اجرای برنامه از اونجا شروع میشه).<br><br></p>
+<p>هرچند ، اگر داری به جای برنامه اجرایی ، یک کتابخونه مینویسی ، روند معمول این هست که فایل <code>main.zig</code> رو حذف کنی و با ماژول <code>root.zig</code> شروع کنی. طبق قاعده کلی ، ماژول <code>root.zig</code> ریشه و بنیان کتابخونه شما هست.</p>
+<pre><code class="language-bash">tree .
+</code></pre>
+<pre><code class="language-result">.
+├── build.zig
+├── build.zig.zon
+└── src
+    ├── main.zig
+    └── root.zig
+
+1 directory, 4 files
+</code></pre>
+<blockquote>
+<p>ادامه دارد ...</p>
+</blockquote>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="0003_Hello_World_In_Zig.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -171,6 +189,9 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="0003_Hello_World_In_Zig.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 

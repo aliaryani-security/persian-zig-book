@@ -8,7 +8,7 @@ class MDBookSidebarScrollbox extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><a href="000_Introduction.html"><strong aria-hidden="true">1.</strong> مقدمه مترجم</a></li><li class="chapter-item expanded "><a href="001_Introducing_Zig.html"><strong aria-hidden="true">2.</strong> معرفی زیگ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="002_What_is_Zig.html"><strong aria-hidden="true">2.1.</strong> زیگ چیه</a></li></ol></li></ol>';
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><a href="0000_Introduction.html"><strong aria-hidden="true">1.</strong> مقدمه مترجم</a></li><li class="chapter-item expanded "><a href="0001_Introducing_Zig.html"><strong aria-hidden="true">2.</strong> معرفی زیگ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="0002_What_is_Zig.html"><strong aria-hidden="true">2.1.</strong> زیگ چیه</a></li><li class="chapter-item expanded "><a href="0003_Hello_World_In_Zig.html"><strong aria-hidden="true">2.2.</strong> سلام دنیا در زیگ </a></li><li><ol class="section"><li class="chapter-item expanded "><a href="0004_Understanding_project_files.html"><strong aria-hidden="true">2.2.1.</strong>  درک فایل های پروژه </a></li></ol></li></ol></li></ol>';
         // Set the current, active page, and reveal it if it's hidden
         let current_page = document.location.href.toString().split("#")[0];
         if (current_page.endsWith("/")) {

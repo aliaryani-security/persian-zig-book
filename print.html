@@ -182,6 +182,36 @@
 <br><br>
 در زیگ خبری از ماکرو ها نیست. در زیگ ، کدی که شما مینویسی دقیقا همون کدی هست که به کامپایلر داده میشه و کامپایل میشه. همچنین سیستم کنترل جریانی که در پشت صحنه مخفی شده باشه هم وجود نداره. و همچنین توابع یا عملگر هایی از کتابخانه استاندارد (standard library) که مخفیانه و بدون اطلاع شما بخوان کار تخصیص مموری (memory allocation) رو انجام بدن هم وجود ندارن.<br><br>
 به دلیل یک زبان ساده تر بودن ، زیگ به مراتب برای خواندن و نوشتن واضح تر و ساده تر میشه ، اما در عین حال ، به یک حالت مقاوم ، با رفتار ثابت در شرایط حساس هم میرسه.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="سلام-زیگ-"><a class="header" href="#سلام-زیگ-">سلام زیگ !</a></h1>
+<p>سفر خودمون رو با نوشتن یک برنامه "Hello World" ساده آغاز میکنیم. برای شروع یک پروژه زیگ ، کافی هست دستور <code>init</code> رو از کامپایلر <code>zig</code> صدا بزنی. یک پوشه جدید روی کامپیوترت ایجاد کن ، و بعد یک پروژه جدید زیگ رو اونجا راه اندازی کن ، این شکلی :</p>
+<pre><code class="language-bash">mkdir hello_world
+cd hello_world
+zig init
+</code></pre>
+<pre><code class="language-result">info: created build.zig
+info: created build.zig.zon
+info: created src/main.zig
+info: created src/root.zig
+info: see `zig build --help` for a menu of options
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="درک-فایل-های-پروژه"><a class="header" href="#درک-فایل-های-پروژه">درک فایل های پروژه</a></h1>
+<p>بعد از اینکه دستور <code>init</code> رو از کامپایلر <code>zig</code> صدا میزنی ، فایل های جدیدی داخل دایرکتوری فعلی ایجاد میشن. اول از همه ، یک دایرکتوری "سورس" (<code>src</code>) ایجاد میشه که شامل دو فایل هست ، <code>main.zig</code> و <code>root.zig</code>. هر فایل <code>.zig</code> یک ماژول جداگانه زیگ هست ، که درواقع یک فایل متنی ساده هست که داخلش کد زیگ قرار گرفته<br><br></p>
+<p>طبق قاعده کلی ، ماژول <code>main.zig</code> جایی هست که تابع اصلی (<code>main funciton</code>) حضور داره. بنابراین ، اگر داری یک برنامه اجرایی در زیگ مینویسی ،‌نیاز هست که یک تابع <code>main()</code>  مشخص کنی ،‌ که نقطه شروع برنامه باشه (جایی که اجرای برنامه از اونجا شروع میشه).<br><br></p>
+<p>هرچند ، اگر داری به جای برنامه اجرایی ، یک کتابخونه مینویسی ، روند معمول این هست که فایل <code>main.zig</code> رو حذف کنی و با ماژول <code>root.zig</code> شروع کنی. طبق قاعده کلی ، ماژول <code>root.zig</code> ریشه و بنیان کتابخونه شما هست.</p>
+<pre><code class="language-bash">tree .
+</code></pre>
+<pre><code class="language-result">.
+├── build.zig
+├── build.zig.zon
+└── src
+    ├── main.zig
+    └── root.zig
+
+1 directory, 4 files
+</code></pre>
+<blockquote>
+<p>ادامه دارد ...</p>
+</blockquote>
 
                     </main>
 
@@ -200,22 +230,6 @@
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script>
-            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
-            const socket = new WebSocket(wsAddress);
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
 
 
 
