@@ -162,7 +162,10 @@
 <br><br>
 اگر روزی خواستی ازم حمایت کنی ، میتونی صفحه <a href="https://instagram.com/aliaryani.security">اینستاگرامم</a> رو دنبال کنی ❤️
 <br><br>
-کتاب رو بخون ، و از یادگیری لذت ببر 🥃</p>
+در ضمن  میتونی از طریق لینک دکمه برام قهوه بخری و ازم حمایت مالی کنی ☕
+<br></p>
+<p><a href="https://daramet.com/aliaryani_sec" target="_black"><img src="./images/coffee.png" alt="خرید قهوه" style="width:30%;height:auto;display:block;margin-left:auto;"></a></p>
+<p>کتاب رو بخون ، و از یادگیری لذت ببر 🥃</p>
 
                     </main>
 
@@ -187,6 +190,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 
